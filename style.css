@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;900&display=swap');
+
+:root {
+  --bg-color: #ccff00; /* Kričavo limun zelena - pravi hakerski vibra */
+  --card-bg: #ffffff;
+  --border-color: #000000;
+  --accent-pink: #ff3366;
+  --accent-blue: #00f0ff;
+  --shadow: 8px 8px 0px #000000;
+  --shadow-hover: 12px 12px 0px #000000;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Zaglavlje */
+.brutal-header {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 50px;
+  background: var(--card-bg);
+  border: 4px solid var(--border-color);
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+
+.badge {
+  display: inline-block;
+  background-color: var(--accent-pink);
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px 14px;
+  border: 3px solid var(--border-color);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(32px, 5vw, 54px);
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Kontejner */
+.brutal-container {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Opća kartica */
+.brutal-card {
+  background-color: var(--card-bg);
+  border: 4px solid var(--border-color);
+  padding: 35px;
+  box-shadow: var(--shadow);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.brutal-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-hover);
+}
+
+h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  margin-top: 0;
+  text-transform: uppercase;
+  border-bottom: 4px solid var(--border-color);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Grid za primjere jezika */
+.grid-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.lang-card {
+  background-color: #fff;
+  position: relative;
+}
+
+.lang-tag {
+  display: inline-block;
+  background-color: var(--accent-blue);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 4px 8px;
+  border: 2px solid var(--border-color);
+  margin-bottom: 10px;
+}
+
+.lang-card h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  margin: 0 0 10px 0;
+}
+
+/* Kod blok */
+.code-section {
+  background-color: #111111;
+  color: #00ff66;
+}
+
+.code-section h2 {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.code-section p {
+  color: #cccccc;
+}
+
+.brutal-code {
+  background-color: #000000;
+  border: 3px solid #00ff66;
+  padding: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  color: #00ff66;
+  box-shadow: 5px 5px 0px #00ff66;
+}
+
+.code-note {
+  font-style: italic;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Gumb */
+.brutal-btn {
+  display: inline-block;
+  background-color: var(--accent-blue);
+  color: #000000;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 18px 30px;
+  border: 4px solid var(--border-color);
+  text-decoration: none;
+  box-shadow: 5px 5px 0px var(--border-color);
+  transition: all 0.1s ease;
+  text-transform: uppercase;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.brutal-btn:hover {
+  background-color: var(--accent-pink);
+  color: #ffffff;
+}
+
+.brutal-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 1px 1px 0px var(--border-color);
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+  max-width: 900px;
+  border: 4px solid #000;
+}
+
+/* Sakrij originalni kursor na desktopu i postavi naš brutalistički kvadratni */
+@media (min-width: 768px) {
+  body {
+    cursor: default; /* ili none ako želiš sakriti pravi kursor skroz */
+  }
+
+  .brutal-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #ff3366;
+    border: 3px solid #000000;
+    pointer-events: none; /* Da ne smeta klikanju */
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, background-color 0.15s ease;
+    z-index: 9999;
+    box-shadow: 3px 3px 0px #000;
+  }
+
+  /* Kad je miš iznad gumba/linka, kursor se pretvara u veliki crni kvadrat */
+  .brutal-cursor.cursor-hover {
+    width: 32px;
+    height: 32px;
+    background-color: #00f0ff;
+    box-shadow: 5px 5px 0px #000;
+  }
+}
+
+/* Uklanjanje standardnog stila linkova za kartice */
+.lang-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+/* Efekt pomicanja (hover) za interaktivnost */
+.lang-card-link:hover .brutal-card {
+  transform: translate(-4px, -4px);
+  box-shadow: 6px 6px 0px #000; /* Prilagodi ovisno o svom brutalističkom stilu */
+}
+
+
+.lang-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lang-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0px #000;
+}

@@ -134,42 +134,9 @@
                 </div>
             </section>
 
-            <!-- 03 // Kod ne mora biti linija -->
+            
             <section class="brutal-card">
-                <h2>03 // Kod ne mora biti linija: Befunge</h2>
-                <p>
-                    Brainfuck je ograničen na kretanje lijevo i desno po jednoj traci memorije, pa je takav program poprilično lagan za prevođenje u strojni kod. Befunge je nastao kao suprotnost tim idejama: autor ga je napisao tako da bude što teži za prevođenje. Tok programa je dvodimenzionalan, pokazivač instrukcija kreće se u svim smjerovima po mreži, a instrukcije <strong>put</strong> i <strong>get</strong> omogućuju da program u stvarnom vremenu mijenja vlastite znakove dok se izvršava. To je jako teško za tipične kompajlere.
-                </p>
-
-                <div class="grid-section">
-                    <article class="brutal-card lang-card" onclick="prikaziDetalje('befunge')">
-                        <p>Klikni ovdje za prikaz detalja Befungea</p>
-                    </article>
-                </div>
-
-                <!-- Detalji za Befunge -->
-                <div id="detalji-befunge" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
-                    <h2>// Befunge – Specifikacija i detalji</h2>
-                    <div class="detalji-sadrzaj">
-                        <p>Befunge je dvodimenzionalni ezoterični programski jezik osmišljen 1993. s ciljem da bude što teži za izvršavanje. Ime je nastalo tako da je autor Chris Pressey u 4 ujutro krivo napisao "before" (prije, prethodno). Kod se nalazi na dvodimenzionalnoj mreži ASCII znakova koji predstavljaju instrukcije, a program se može izvoditi u bilo kojem smjeru: gore, dolje, lijevo ili desno. Smatra se da je to prvi 2D programski jezik. Prvi u Funge obitelji je Befunge-93, a najsličniji mu je Befunge-98.</p>
-
-                        <p>Izvršavanje se odvija programskim brojačem (-93) ili instrukcijskim pokazivačem (-98), koji pokazuje na polje u mreži (playfield). Instrukcijski pokazivač ima inerciju: ide u smjeru dok ne naiđe na instrukciju koja mu mijenja smjer. Kreće se iz gornjeg lijevog kuta i ide desno dok ne naiđe na instrukciju koja ga preusmjeri. Instrukcije se izvode čim se naiđe na njih. Befunge-93 može preskočiti do dvije ćelije, a Befunge-98 dalje, no zbog inercije se to rijetko koristi.</p>
-
-                        <p>Befunge je 2D, ali Funge obitelj nudi i druge dimenzionalnosti: Unefunge je 1D, Trefunge je 3D, Nefunge je N-dimenzionalan.</p>
-
-                        <p>Za Befunge je napisan i kod za Fungot, bot čiji je kod toliko mali da stane na majicu kao ispis.</p>
-
-                        <p>Befunge-93 ima ograničenje od 80×25 ćelija na igralištu, a programi imaju radni stog s 32-bitnim elementima. Zbog toga postoje potisni automati koji se u Befungeu-93 ne mogu simulirati. Befunge-98 nema takva ograničenja i Turing-potpun je.</p>
-
-                        <p><em>Izvor:</em> <a href="https://esolangs.org/wiki/Befunge" target="_blank">https://esolangs.org/wiki/Befunge</a></p>
-                    </div>
-                    <button onclick="zatvoriDetalje('befunge')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
-                </div>
-            </section>
-
-            <!-- 04 // Kod ne mora izgledati kao kod -->
-            <section class="brutal-card">
-                <h2>04 // Kod ne mora izgledati kao kod: Piet, Whitespace, Chef</h2>
+                <h2>03 // Kod ne mora izgledati kao kod: Piet, Whitespace, Chef</h2>
                 <p>
                     Do sada smo vidjeli neobične jezike, ali svi, koliko god bili neobični, podsjećaju na kod. Ne mora tako uvijek biti. Piet je nastao jer je autor htio da program izgleda kao apstraktna umjetnost. Whitespace se pobunio protiv toga da se bjeline u kodu ignoriraju, pa u njemu ignoriramo sve osim njih. Chef pak mora izgledati kao recept koji se može skuhati.
                 </p>
@@ -255,7 +222,7 @@
 
             <!-- 05 // Koliko ovo teško može biti? -->
             <section class="brutal-card">
-                <h2>05 // Koliko ovo teško može biti? Malbolge</h2>
+                <h2>04 // Koliko ovo teško može biti? Malbolge</h2>
                 <p>
                     Mnogi ezoterični jezici imaju zanimljivu motivaciju: minimalizam, iskorištavanje dosad neiskorištenih mogućnosti ili estetsku privlačnost. Neki pak pitaju: kako maksimalno otežati stvari? Kralj među njima je Malbolge, koji je nastao s jednim ciljem: napraviti jezik u čijem je okruženju rad gotovo nemoguć. Čak ni autor ne zna pisati u Malbolgeu. Prvi program u Malbolgeu, Hello World, generiran je pretraživanjem uz pomoć genetskog algoritma (Andrew Morton, 1998.), a prema uobičajenoj priči za to je trebalo oko dvije godine.
                 </p>
@@ -290,7 +257,7 @@
                 </div>
             </section>
 
-            <!-- 06 // Zašto ezoterični programski jezici? -->
+            <!-- 05 // Zašto ezoterični programski jezici? -->
             <section class="brutal-card">
                 <h2>06 // Zašto ezoterični programski jezici?</h2>
                 <p>

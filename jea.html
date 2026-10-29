@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <title>ESOLANG</title>
+        <style>
+            /* Tvoj CSS možeš ostaviti ovdje ili u style.css datoteci */
+        </style>
+
+        <script src="script.js"></script>
+
+        <link href="style.css" type="text/css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    </head>
+
+    <body>
+        <!-- 1. ZAGLAVLJE (HEADER) -->
+        <header class="brutal-header">
+            
+            <h1>EZOTERIČNI PROGRAMSKI JEZICI</h1>
+        </header>
+
+        <!-- 2. GLAVNI SADRŽAJ (MAIN) -->
+        <main class="brutal-container">
+
+            <!-- 00 // Uvod -->
+            <section class="brutal-card">
+                <h2>00 // Uvod</h2>
+                <p>
+                    Ezoterični (unutarnji, skriven, tajnovit, skrovit) programski jezici osmišljeni su u svrhe testiranja granica programiranja: bilo za dokazivanje njihove učinkovitosti, kao umjetnost, za hakiranje drugog programskog jezika ili kao šala. Autori ezoteričnih jezika uglavnom ne stvaraju jezik kako bi se funkcionalno koristio u praktične svrhe, pa tako često nemaju tipičnu sintaksu i značajke jezika.
+                </p>
+                <p>
+                    Ezoterični jezici se previše razlikuju, no većina ima zajedničke karakteristike: minimalizam, parodiju ili cilj da se programiranje maksimalno oteža. Ne postoji strogo definirana podjela, ali možemo ih grupirati: minimalni jezici (cilj je što manji broj naredbi), tematski i humoristični jezici (nastali kao inat ili šala na dotadašnje jezike ili djela), vizualni i višedimenzionalni jezici (tok izvršavanja nije linearan) te kriptografski jezici (nastali kako bi bili nepotrebno zahtjevni).
+                </p>
+                <p>
+                    Ove grupe imaju dosta neobičnih svojstava, pa se postavlja pitanje jesu li ezoterični jezici uopće pogodni za programiranje i za što ih možemo iskoristiti.
+                </p>
+            </section>
+
+            <!-- 01 // INTERCAL pr.Kr. -->
+            <section class="brutal-card">
+                <h2>01 // INTERCAL pr.Kr.</h2>
+                <p>
+                    Programski jezici koji nisu ezoterični, korišteni do 1972., svakako su služili svojim namjenama. No problemi su bili birokratska struktura koda (potrebno pisanje nepotrebnog koda), prevelika interpretabilnost (interpreter ne javlja grešku kada bi trebao) i zahtjev za specijalnim tipkovnicama (toliko specijalnim da ih nemamo na tipkovnici).
+                </p>
+                <p>
+                    Inspirirani tim nepotrebnim karakteristikama, dva studenta osmislila su prvi ezoterični programski jezik: INTERCAL. Bio je parodija na tadašnje jezike i trebao je biti sve što oni nisu. Određeni postotak linija koda mora sadržavati naredbu PLEASE, a umjesto GOTO postoji COME FROM.
+                </p>
+
+                <div class="grid-section">
+                    <article class="brutal-card lang-card" onclick="prikaziDetalje('intercal')">
+                        <p>Klikni ovdje za prikaz detalja INTERCAL-a</p>
+                    </article>
+                </div>
+
+                <!-- Detalji za INTERCAL -->
+                <div id="detalji-intercal" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
+                    <h2>// INTERCAL</h2>
+                    <div class="detalji-sadrzaj">
+                        <p>Prvi ezoterični jezik INTERCAL dizajniran je 1972. s ciljem da bude potpuno drugačiji od tadašnjih jezika (FORTRAN, BASIC, COBOL, SNOBOL, LISP). Službeno nije bio korišten sve dok 1990. nije implementiran interpreter u C-u, nakon čega je interes za ezoterične jezike porastao.</p>
+
+                        <p><strong>INTERCAL</strong> ili <em>Compiler Language With No Pronounceable Acronym</em> osmislili su Don Woods i James M. Lyon kao satiru na tadašnje programske jezike. Trenutno se održavaju tri dijalekta: C-INTERCAL, CLC-INTERCAL i INTERCAL64.</p>
+
+                        <h3>Sintaksa i varijable</h3>
+                        <p>INTERCAL ima samo dva tipa varijabli: 16-bitni cijeli broj, označen s (.), i 32-bitni cijeli broj, označen s (:). Spremaju se nenegativni brojevi od 0 do 2<sup>16</sup>-1, odnosno od 0 do 2<sup>32</sup>-1. Varijable .67 i :67 su različite, dok .00001 i .1 predstavljaju istu varijablu.</p>
+
+                        <p>Konstante su isključivo 16-bitne. Napomena iz priručnika:</p>
+                        <blockquote>"Caution! Under no circumstances confuse the mesh with the interleave operator, except under confusing circumstances!"</blockquote>
+
+                        <p>INTERCAL prikazuje polja sa , (16-bitno polje) i ; (32-bitno polje).</p>
+
+                        <h3>Operacije</h3>
+                        <p>Binarne operacije su interleave (¢) i select (~). Interleave kombinira znamenke bitova oba 16-bitna unosa i daje 32-bitnu kombinaciju.<br><em>Primjer:</em> .0¢.65535 daje u bitovima 0101....01</p>
+
+                        <p>Select uzima one bitove prvog operanda čije pozicije odgovaraju pozicijama jedinica drugog operanda. Ako je jedan od operanada veći od 16 bitova, rezultat je 32-bitni.<br><em>Primjer:</em> .179~.201, u bitovima: 10110011~11001001, rezultat: 1001</p>
+
+                        <p>Unarne operacije su AND (oznaka za end), OR (V) i XOR (za svaki). Ne mogu se nadovezivati, nego se više operacija pokreće grupiranjem sa 'ili '. Radi jednostavnijeg koda, '. možemo zamijeniti s !.</p>
+
+                        <h3>Naredbe i tok</h3>
+                        <p>Labele se označavaju brojem od 0 do 65535 unutar zagrade. Lokacije od 1000 do 1999 rezervirane su za biblioteke INTERCAL-a. Nakon labele (ako je ima) slijedi identifikator: DO, PLEASE ili PLEASE DO, zatim kvalifikator: NOT ili N'T (što nulificira naredbu) i [broj od 0 do 100]% (vjerojatnost da se naredba izvrši pri svakom prolasku). Nakon toga dolazi jedna od operacija: calculate, NEXT, FORGET, RESUME, STASH, RETRIEVE, IGNORE, REMEMBER, ABSTAIN, REINSTATE, GIVE UP, INPUT ili OUTPUT.</p>
+                        <p>Pri računanju &lt;- znači pridruživanje, odnosno jednako.</p>
+
+                        <h3>Primjeri grešaka</h3>
+                        <ul>
+                            <li><strong>ICL079 (ili E079) PROGRAMMER IS INSUFFICIENTLY POLITE</strong>: PLEASE je u manje od 20% linija.</li>
+                            <li><strong>ICL099 (ili E099) PROGRAMMER IS OVERLY POLITE</strong>: PLEASE je u više od 33% linija.</li>
+                        </ul>
+
+                        </div>
+                    <button onclick="zatvoriDetalje('intercal')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
+                </div>
+            </section>
+
+            <!-- 02 // Možemo li ovo smanjiti? -->
+            <section class="brutal-card">
+                <h2>02 // Možemo li ovo smanjiti? brainfuck</h2>
+                <p>
+                    Uspješna implementacija INTERCAL interpretera potaknula je zanimanje za ezoterične jezike, a jedan od smjerova postao je minimalizam: smisliti što manji mogući jezik. Jedan od prvih takvih jezika bio je FALSE, nazvan po autorovoj najdražoj istinitosnoj vrijednosti. Cilj je bio stvoriti što jači, konfuzniji jezik sa što manjim kompajlerom. Originalni kompajler imao je 1024 bajta i bio je napisan u asembleru za M68k. Već iste godine, inspiriran FALSE-om, nastao je brainfuck, predstavnik minimalističke klase ezoteričnih jezika.
+                </p>
+
+                <div class="grid-section">
+                    <article class="brutal-card lang-card" onclick="prikaziDetalje('brainfuck')">
+                        <p>Klikni ovdje za prikaz detalja brainfucka</p>
+                    </article>
+                </div>
+
+                <!-- Detalji za Brainfuck -->
+                <div id="detalji-brainfuck" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
+                    <h2>// brainfuck – Specifikacija i detalji</h2>
+                    <div class="detalji-sadrzaj">
+                        <p>Brainfuck je osmislio Urban Müller 1993. Ideja iza jezika bila je mogućnost pisanja najmanjeg kompajlera. Inspiriran je FALSE-om, koji je imao 1024-bajtni kompajler, dok je za brainfuck napisao 240-bajtni. Ime se zbog cenzure često piše na različite načine: Brainfuck, Brainf***, Brainf*ck, brainf***, brainflakes, bf, pa je literaturu teško pretraživati.</p>
+
+                        <p>Brainfuck radi nad poljem memorijskih ćelija, na početku inicijaliziranih na nulu. Koliko memorije ima ovisi o interpreteru. Pokazivač na početku pokazuje na prvu ćeliju. Brainfuck ima samo 8 naredbi:</p>
+
+                        <ul>
+                            <li><code>&gt;</code> pomakni pokazivač desno</li>
+                            <li><code>&lt;</code> pomakni pokazivač lijevo</li>
+                            <li><code>+</code> povećaj ćeliju pod pokazivačem</li>
+                            <li><code>-</code> smanji ćeliju pod pokazivačem</li>
+                            <li><code>.</code> ispiši znak određen vrijednošću ćelije</li>
+                            <li><code>,</code> učitaj znak i spremi ga u ćeliju</li>
+                            <li><code>[</code> skoči iza odgovarajuće <code>]</code> ako je ćelija 0</li>
+                            <li><code>]</code> skoči natrag na odgovarajuću <code>[</code> ako ćelija nije 0</li>
+                        </ul>
+
+                        <p>Brainfuck je stvarno minimalan jezik, ali to ne znači da se njime ne mogu rješavati ozbiljni problemi. Ako imamo neograničenu memoriju (ili barem nekoliko ćelija s neograničenim vrijednostima), brainfuck je Turing-potpun.</p>
+
+                        <h3>Skica dokaza</h3>
+                        <p>Konfiguraciju Turingovog stroja (stanje, traka, pozicija glave) kodiramo u ćelije. Jedan korak stroja simuliramo konačnim blokom naredbi: pročitamo simbol pod glavom, granamo po stanju i simbolu, zapišemo novi simbol i pomaknemo pokazivač. Ponavljanjem tog bloka u petlji dobivamo izvođenje stroja. Ovo vrijedi za idealiziranu beskonačnu traku, a stvarni interpreteri imaju konačnu memoriju.</p>
+
+                        <p>Turing-potpunost i nedostatak ugrađenih naredbi čine brainfuck reprezentativnim primjerom takozvanog Turingovog ponora: Turing-potpunog jezika s minimalnim brojem operacija.</p>
+                    </div>
+                    <button onclick="zatvoriDetalje('brainfuck')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
+                </div>
+            </section>
+
+            <!-- 03 // Kod ne mora biti linija -->
+            <section class="brutal-card">
+                <h2>03 // Kod ne mora biti linija: Befunge</h2>
+                <p>
+                    Brainfuck je ograničen na kretanje lijevo i desno po jednoj traci memorije, pa je takav program poprilično lagan za prevođenje u strojni kod. Befunge je nastao kao suprotnost tim idejama: autor ga je napisao tako da bude što teži za prevođenje. Tok programa je dvodimenzionalan, pokazivač instrukcija kreće se u svim smjerovima po mreži, a instrukcije <strong>put</strong> i <strong>get</strong> omogućuju da program u stvarnom vremenu mijenja vlastite znakove dok se izvršava. To je jako teško za tipične kompajlere.
+                </p>
+
+                <div class="grid-section">
+                    <article class="brutal-card lang-card" onclick="prikaziDetalje('befunge')">
+                        <p>Klikni ovdje za prikaz detalja Befungea</p>
+                    </article>
+                </div>
+
+                <!-- Detalji za Befunge -->
+                <div id="detalji-befunge" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
+                    <h2>// Befunge – Specifikacija i detalji</h2>
+                    <div class="detalji-sadrzaj">
+                        <p>Befunge je dvodimenzionalni ezoterični programski jezik osmišljen 1993. s ciljem da bude što teži za izvršavanje. Ime je nastalo tako da je autor Chris Pressey u 4 ujutro krivo napisao "before" (prije, prethodno). Kod se nalazi na dvodimenzionalnoj mreži ASCII znakova koji predstavljaju instrukcije, a program se može izvoditi u bilo kojem smjeru: gore, dolje, lijevo ili desno. Smatra se da je to prvi 2D programski jezik. Prvi u Funge obitelji je Befunge-93, a najsličniji mu je Befunge-98.</p>
+
+                        <p>Izvršavanje se odvija programskim brojačem (-93) ili instrukcijskim pokazivačem (-98), koji pokazuje na polje u mreži (playfield). Instrukcijski pokazivač ima inerciju: ide u smjeru dok ne naiđe na instrukciju koja mu mijenja smjer. Kreće se iz gornjeg lijevog kuta i ide desno dok ne naiđe na instrukciju koja ga preusmjeri. Instrukcije se izvode čim se naiđe na njih. Befunge-93 može preskočiti do dvije ćelije, a Befunge-98 dalje, no zbog inercije se to rijetko koristi.</p>
+
+                        <p>Befunge je 2D, ali Funge obitelj nudi i druge dimenzionalnosti: Unefunge je 1D, Trefunge je 3D, Nefunge je N-dimenzionalan.</p>
+
+                        <p>Za Befunge je napisan i kod za Fungot, bot čiji je kod toliko mali da stane na majicu kao ispis.</p>
+
+                        <p>Befunge-93 ima ograničenje od 80×25 ćelija na igralištu, a programi imaju radni stog s 32-bitnim elementima. Zbog toga postoje potisni automati koji se u Befungeu-93 ne mogu simulirati. Befunge-98 nema takva ograničenja i Turing-potpun je.</p>
+
+                        <p><em>Izvor:</em> <a href="https://esolangs.org/wiki/Befunge" target="_blank">https://esolangs.org/wiki/Befunge</a></p>
+                    </div>
+                    <button onclick="zatvoriDetalje('befunge')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
+                </div>
+            </section>
+
+            <!-- 04 // Kod ne mora izgledati kao kod -->
+            <section class="brutal-card">
+                <h2>04 // Kod ne mora izgledati kao kod: Piet, Whitespace, Chef</h2>
+                <p>
+                    Do sada smo vidjeli neobične jezike, ali svi, koliko god bili neobični, podsjećaju na kod. Ne mora tako uvijek biti. Piet je nastao jer je autor htio da program izgleda kao apstraktna umjetnost. Whitespace se pobunio protiv toga da se bjeline u kodu ignoriraju, pa u njemu ignoriramo sve osim njih. Chef pak mora izgledati kao recept koji se može skuhati.
+                </p>
+
+                <!-- Piet -->
+                <h3>Piet</h3>
+                <div class="grid-section">
+                    <article class="brutal-card lang-card" onclick="prikaziDetalje('piet')">
+                        <p>Klikni ovdje za prikaz detalja Pieta</p>
+                    </article>
+                </div>
+                <div id="detalji-piet" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
+                    <h2>// Piet – Specifikacija i detalji</h2>
+                    <div class="detalji-sadrzaj">
+                        <p>Piet je dizajnirao David Morgan-Mar s ciljem da programi izgledaju kao apstraktna vizualna umjetnost. Inspiracija su bile slike Pieta Mondriana. Jezik se originalno trebao zvati Mondrian, ali ime je već bilo zauzeto.</p>
+                        <blockquote>"I would have liked to call the language Mondrian, but someone beat me to it with a rather mundane-looking scripting language. Oh well, we can't all be esoteric language writers I suppose."</blockquote>
+                        <p>Piet koristi 20 boja. Njih 18 čine cikličan krug: 6 boja (crvena, žuta, zelena, cijan, plava i magenta) u tri svijetline (svijetla, intenzivna i tamna). Bijela i crna ne pripadaju tom krugu. Krug ide crvena → žuta → … → magenta → crvena, a svijetline svijetla → intenzivna → tamna → svijetla. Ostale boje mogu se koristiti, ali to ovisi o interpreteru, a standardni interpreter ih tretira kao bijele.</p>
+                        <p>U Pietu su gradivne jedinice blokovi boja. Blok je skup kodela (piksela) iste boje koji se dodiruju nedijagonalno, a može sadržavati praznine ili druge boje unutar sebe. Svi podaci se spremaju na stog kao cijeli brojevi. Broj kodela u necrnom i nebijelom bloku predstavlja cijeli broj koji se može, ali ne mora, spremiti na stog. Negativni brojevi se ne mogu prikazati kodelima, ali se mogu generirati operacijama.</p>
+                        <p>Izvršavanje kreće u gornjem lijevom kutu. Interpreter čuva pokazivač smjera (DP) i birač kodela (CC). DP ima smjerove gore, dolje, lijevo i desno (početno desno), a CC lijevo i desno (početno lijevo). Interpreter se kreće u smjeru DP-a do ruba bloka. Tamo CC određuje koji se kodel uzima, pa se prelazi u novi blok. Ako se interpreter ne može maknuti iz bloka, rotira CC i DP. Ako nakon osme rotacije ne može van, program se zaustavlja. Crni kodeli označavaju zid i mijenjaju smjer. Bijeli kodeli su slobodne zone kroz koje DP prolazi do sljedećeg bloka bez izvršavanja naredbi.</p>
+                        <p><em>Izvor:</em> <a href="https://dangermouse.net/esoteric/piet.html" target="_blank">https://dangermouse.net/esoteric/piet.html</a></p>
+                    </div>
+                    <button onclick="zatvoriDetalje('piet')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
+                </div>
+
+                <!-- Whitespace -->
+                <h3 style="margin-top: 20px;">Whitespace</h3>
+                <div class="grid-section">
+                    <article class="brutal-card lang-card" onclick="prikaziDetalje('whitespace')">
+                        <p>Klikni ovdje za prikaz detalja Whitespacea</p>
+                    </article>
+                </div>
+                <div id="detalji-whitespace" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
+                    <h2>// Whitespace – Specifikacija i detalji</h2>
+                    <div class="detalji-sadrzaj">
+                        <p>Whitespace su 2002. osmislili Edwin Brady i Chris Morris. Za razliku od tipičnih jezika, gdje se bjeline ignoriraju, Whitespace ignorira sve što nisu bjeline. Zato prostor između bjelina možemo popuniti kodom nekog drugog jezika, pa je takav kod poliglotski.</p>
+                        <p>Instrukcije su kombinacije tri bjeline: razmak (SPACE), tabulator (TAB) i novi red (LF):</p>
+                        <table>
+                            <tr><th>Niz</th><th>Značenje</th></tr>
+                            <tr><td>razmak</td><td>manipulacija stogom</td></tr>
+                            <tr><td>tab + razmak</td><td>aritmetika</td></tr>
+                            <tr><td>tab + tab</td><td>pristup hrpi (heap)</td></tr>
+                            <tr><td>novi red</td><td>kontrola toka</td></tr>
+                            <tr><td>tab + novi red</td><td>ulaz i izlaz</td></tr>
+                        </table>
+                        <p>Što se događa sa stogom, ovisi o naredbama koje slijede.</p>
+                    </div>
+                    <button onclick="zatvoriDetalje('whitespace')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
+                </div>
+
+                <!-- Chef -->
+                <h3 style="margin-top: 20px;">Chef</h3>
+                <div class="grid-section">
+                    <article class="brutal-card lang-card" onclick="prikaziDetalje('chef')">
+                        <p>Klikni ovdje za prikaz detalja Chefa</p>
+                    </article>
+                </div>
+                <div id="detalji-chef" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
+                    <h2>// Chef – Specifikacija i detalji</h2>
+                    <div class="detalji-sadrzaj">
+                        <p>Chef je programski jezik u kojem programi izgledaju kao kulinarski recepti. Dizajnirao ga je David Morgan-Mar 2002. godine.</p>
+                        <h3>Principi dizajna</h3>
+                        <ul>
+                            <li>Programski recepti, osim što moraju davati validan izlaz, moraju biti ukusni i jednostavni za pripremu.</li>
+                            <li>Recepti mogu odgovarati kuharima s različitim budžetima.</li>
+                            <li>Recepti koriste metrički sustav, ali mogu sadržavati tradicionalne mjere poput šalice i žlice.</li>
+                        </ul>
+                        <p>Svi recepti imaju sastojke, pa Chef sastojke koristi za pohranu podataka. Svi su numerički, ali mogu se interpretirati i kao Unicode. Tekući sastojci daju izlazne Unicode znakove, a suhi i nespecificirani daju numeričke podatke.</p>
+                        <p>Kuhar ima neograničenu zalihu posuda za miješanje i posuda za pečenje. Sastojci su u posudama poredani u stog. Ako se vrijednost sastojka promijeni, vrijednost u posudi ostaje nepromijenjena. Posude imaju oznaku suho ili tekuće. Posudu pozivamo rednim brojem (1st, 2nd, 3rd, 10th). Ako imamo samo jednu posudu, redni broj nije potreban.</p>
+                        <p>Recept počinje naslovom koji kombinira ono što program radi i jelo koje se može pripremiti, npr. "Fibonaccijevi brojevi s ajvarom od banane". Zatim nabrajamo sastojke i njihove količine, odnosno količinu i mjeru (npr. 10g), te njihovu značajku (mokro, suho ili nedefinirano). Vrijeme kuhanja i temperatura pećnice su brojevi. Sastojci, vrijeme i temperatura su opcionalni.</p>
+                        <h3>Neke od naredbi:</h3>
+                        <ul>
+                            <li><code>Take ingredient from refrigerator</code>: učitaj broj s ulaza u sastojak, pa prepiši prethodnu vrijednost.</li>
+                            <li><code>Put ingredient into [nth] mixing bowl</code>: stavi sastojak u n-tu posudu.</li>
+                            <li><code>Fold ingredient into [nth] mixing bowl</code>: skini vrh posude i spremi ga u sastojak.</li>
+                            <li><code>Add ingredient [to [nth] mixing bowl]</code>: zbroji sastojak s vrhom n-te posude i rezultat spremi u posudu.</li>
+                            <li><code>Remove ingredient [from [nth] mixing bowl]</code>: oduzmi sastojak od vrha n-te posude i rezultat spremi u posudu.</li>
+                        </ul>
+                        <p><em>Izvor:</em> <a href="https://www.dangermouse.net/esoteric/chef.html" target="_blank">https://www.dangermouse.net/esoteric/chef.html</a></p>
+                    </div>
+                    <button onclick="zatvoriDetalje('chef')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
+                </div>
+            </section>
+
+            <!-- 05 // Koliko ovo teško može biti? -->
+            <section class="brutal-card">
+                <h2>05 // Koliko ovo teško može biti? Malbolge</h2>
+                <p>
+                    Mnogi ezoterični jezici imaju zanimljivu motivaciju: minimalizam, iskorištavanje dosad neiskorištenih mogućnosti ili estetsku privlačnost. Neki pak pitaju: kako maksimalno otežati stvari? Kralj među njima je Malbolge, koji je nastao s jednim ciljem: napraviti jezik u čijem je okruženju rad gotovo nemoguć. Čak ni autor ne zna pisati u Malbolgeu. Prvi program u Malbolgeu, Hello World, generiran je pretraživanjem uz pomoć genetskog algoritma (Andrew Morton, 1998.), a prema uobičajenoj priči za to je trebalo oko dvije godine.
+                </p>
+
+                <div class="grid-section">
+                    <article class="brutal-card lang-card" onclick="prikaziDetalje('malbolge')">
+                        <p>Klikni ovdje za prikaz detalja Malbolgea</p>
+                    </article>
+                </div>
+
+                <!-- Detalji za Malbolge -->
+                <div id="detalji-malbolge" class="brutal-card detalji-box" style="display: none; margin-top: 20px; border: 3px dashed #000;">
+                    <h2>// Malbolge – Specifikacija i detalji</h2>
+                    <div class="detalji-sadrzaj">
+                        <p>Malbolge je osmislio Ben Olmstead 1998. s ciljem da bude najteži programski jezik na svijetu. Nazvao ga je po Malebolgeu, osmom krugu pakla iz Danteove Božanstvene komedije.</p>
+
+                        <p>Malbolge radi s brojevima u bazi 3, a za adresiranje i aritmetiku koristi operaciju <em>crazy</em>, tablicu 3×3 za tritove. Zbog toga se ne mogu koristiti standardne predodžbe o zbrajanju ili množenju.</p>
+
+                        <p>Nakon što se instrukcija pročita, mijenja se funkcijom <em>crypt</em> i nastavlja se mijenjati dok se program izvršava. Zato isti redak pri svakom prolasku može značiti nešto drugo, pa je program praktički nečitljiv.</p>
+
+                        <p>Vrijednost znaka c prolazi kroz formulu (c + pokazivač) mod 94 i tek tada se preslikava u instrukciju. Program mora biti unaprijed kriptiran da bi bio valjan, inače se ne izvršava. Podaci i instrukcije žive u istom prostoru, pa pokazivač može pročitati podatak kao instrukciju. Taj samomodificirajući kod potaknuo je ideje o korištenju Malbolgea u kriptografiji, no to još nije realizirano.</p>
+
+                        <p>Primjer programa (Hello World):</p>
+                        <pre><code>(=<`#9]~6ZY327Uv4-QsqpMn&amp;+Ij"'E%e{Ab~w=_:]Kw%o44Uqp0/Q?xNvL:`H%c#DD2^WV&gt;gY;dts76qKJImZkj</code></pre>
+
+                        <p><em>Izvori:</em> <br>
+                           - <a href="https://malbolge.org/" target="_blank">https://malbolge.org/</a><br>
+                           - <a href="https://www.trs.css.i.nagoya-u.ac.jp/projects/Malbolge/papers/IPSJ-SIGPRO-2014-1-6.pdf" target="_blank">Rad o Malbolgeu (IPSJ 2014)</a>
+                        </p>
+                    </div>
+                    <button onclick="zatvoriDetalje('malbolge')" class="brutal-btn" style="margin-top: 15px; font-size: 0.8rem; padding: 5px 10px;">Zatvori [X]</button>
+                </div>
+            </section>
+
+            <!-- 06 // Zašto ezoterični programski jezici? -->
+            <section class="brutal-card">
+                <h2>06 // Zašto ezoterični programski jezici?</h2>
+                <p>
+                    Ezoterični jezici nisu optimalan način programiranja, pa se pitamo imaju li smisla. Većinom su nastali kao odgovor na tadašnje načine programiranja ili na aktualne trendove, a originalno su uglavnom šale, pa nisu baš upotrebljivi. Ipak, ne bi se moglo reći da su potpuno beskorisni. 
+                </p>
+                <p>
+                    Neke značajke ezoteričnih jezika otkrile su nedostatke o kojima se kasnije počelo voditi računa, a neki jezici su se koristili i na konkretan način. JSFuck, sa šest znakova, spominje se kao primjer za zaobilaženje filtera koji traže riječi kao što su <strong>script</strong> i <strong>alert</strong>. (Tvrdnja treba izvor.) Malbolge se zbog samomodificirajućeg koda potencijalno može iskoristiti u kriptografiji, jer programima očito trebaju godine da ga generiraju. Whitespace je pokazao da se razmaci mogu koristiti kao nositelj informacije.
+                </p>
+                 </section>
+
+        </main>
+
+        <!-- 3. PODNOŽJE (FOOTER) -->
+        <footer>
+            <p>Ezoterični Programski jezici | Ana-Marija Milin</p>
+        </footer>
+
+        <!-- JAVASCRIPT ZA DINAMIČKO OTVARANJE I ZATVARANJE -->
+        <script>
+            function prikaziDetalje(jezik) {
+                // Sakrij sve otvorene detalje
+                const sviDetalji = document.querySelectorAll('.detalji-box');
+                sviDetalji.forEach(box => {
+                    box.style.display = 'none';
+                });
+
+                // Prikaži traženi i skrolaj do njega
+                const kutija = document.getElementById('detalji-' + jezik);
+                if (kutija) {
+                    kutija.style.display = 'block';
+                    kutija.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+
+            function zatvoriDetalje(jezik) {
+                const kutija = document.getElementById('detalji-' + jezik);
+                if (kutija) {
+                    kutija.style.display = 'none';
+                }
+            }
+        </script>
+    </body>
+</html>
